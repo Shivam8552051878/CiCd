@@ -1,6 +1,4 @@
-# .github/wokflows/firstCiCd.yaml
-
-name : CI Pipeline
+name: CI Pipeline
 
 on: 
   push:
@@ -12,10 +10,12 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
       - name: Setup Python
-        uses: actions/setup-python
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.13.1
+          python-version: "3.11"
+
       - name: Using for Datascience
         uses: iterative/setup-cml@v4
 
@@ -27,12 +27,17 @@ jobs:
       - name: Run Main File
         run: python main.py
 
-      - name: Create Report Using iterative/setup-cml
+      - name: Publish Image
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cml publish foo.png --md >> report.md
+
+      - name: Create Report Using CML
         env: 
-            REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "# First line of code" >> report.md
-          echo "![](./foo.png', "bar plot")" >> report.md
+          cat report.md
           echo "** Thank You **" >> report.md
-          cml comment  create report.md
-
+          cml comment create report.md
