@@ -20,4 +20,4 @@ for sex, sex_count in sex_counts.items():
 ax.set_title('Number of penguins by sex')
 ax.legend()
 
-plt.savefig('foo.png', bbox_inches='tight')
+plt.savefig('plot.png', bbox_inches='tight')
