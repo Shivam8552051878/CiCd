@@ -6,6 +6,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
 
     steps:
       - name: Checkout Repository
@@ -42,6 +46,6 @@ jobs:
         env: 
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo 'My first CML report' > report.md
+          echo 'My first CML report' >> report.md
           echo '![](./plot.png)' >> report.md
           cml comment create --publish report.md
