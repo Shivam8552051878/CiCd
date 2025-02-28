@@ -17,7 +17,7 @@ jobs:
           python-version: "3.11"
 
       - name: Using for Datascience
-        uses: iterative/setup-cml@v4
+        uses: iterative/setup-cml@v1
 
       - name: Running dependency
         run: |
