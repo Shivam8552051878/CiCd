@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 species = ('Adelie', 'Chinstrap', 'Gentoo')
 sex_counts = {
     'Male': np.array([73, 34, 61]),
