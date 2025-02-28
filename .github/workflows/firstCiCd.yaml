@@ -48,4 +48,5 @@ jobs:
         run: |
           echo 'My first CML report' >> report.md
           echo '![](./plot.png)' >> report.md
-          cml comment create "My first CML report ![inline](./plot.png)"
+          cml comment create "$(cat report.md)"
+
