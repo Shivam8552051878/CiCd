@@ -41,7 +41,7 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo 'testing `cml comment create report2.md`'
-          echo '![inline](./asset.png)' >> report2.md
+          echo '![inline](./plot2.png)' >> report2.md
           cml comment create report2.md
 
       - name: Create Report Using CML
